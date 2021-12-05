@@ -1,0 +1,19 @@
+<!-- Partials - Reutilização de código repetido em todas as páginas -->
+<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
+<div class="detailsPage">
+	<h2 style="text-align: center"><%= users.nickname %> Details</h2>
+
+	<div class="user-info-details">
+		<h3>Nickname: <%= users.nickname %></h3>
+		<p>
+			Unique ID: <%= users._id %><br />
+			Created at <%= moment(users.createdAt).format("DD-MM-YYYY HH:mm") %><br />
+			Updated at <%= moment(users.updatedAt).format("DD-MM-YYYY HH:mm") %><br />
+			Email: <%= users.email %><br />
+			Password: <%= users.password %>
+		</p>
+	</div>
+
+	<button onclick="window.location.href='/';">Back</button>
+</div>
+<%- include('./partials/footer.ejs') %>

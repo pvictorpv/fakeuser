@@ -1,0 +1,136 @@
+/**
+ * Forced light theme version
+ */
+
+body {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+}
+
+.createUpdateForm {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.createUpdateForm button {
+	margin: 5px auto;
+}
+
+header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+header h1 {
+	display: inline-block;
+	margin: 16px 0;
+	border: solid 2px black;
+	padding: 5px;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav ul {
+	list-style-type: none;
+}
+
+nav li {
+	display: inline-block;
+	margin: 10px;
+}
+
+nav li a {
+	padding: 0;
+}
+
+main a:hover {
+	text-decoration: none;
+}
+
+.user-box {
+	border: solid 5px black;
+	margin: 10px 0;
+	padding: 0 10px;
+	text-align: center;
+}
+
+.user-buttons {
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+}
+
+.user-buttons form {
+	margin: 0;
+	display: inline-block;
+}
+
+.action-buttons {
+	display: inline-block;
+	padding: 0;
+	width: min-content;
+	background: none;
+	border: 0;
+}
+
+.icons {
+	color: var(--primary);
+	padding: 0 10px;
+}
+
+.detailsPage {
+	display: flex;
+	flex-direction: column;
+}
+
+.detailsPage button {
+	width: min-content;
+	margin: 10px auto;
+}
+
+.user-info-details {
+	border: solid 5px black;
+	padding: 0 10px;
+}
+
+.user-info-details p {
+	margin-bottom: 10px;
+}
+
+h4 {
+	font-size: 60px;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+main p {
+	margin: 10px 0 0 0;
+	text-align: center;
+}
+
+body > footer,
+body > header,
+body > main {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 0;
+}
+
+h3,
+h2 {
+	margin: 10px 0 !important;
+}

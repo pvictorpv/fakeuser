@@ -1,0 +1,41 @@
+<!-- Partials - Reutilização de código repetido em todas as páginas -->
+<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
+<main>
+	<p>
+		Welcome to the Fake User Creation - A Node JS sandbox to practice CRUD
+		operations, REST API architecture, authentication, and other essential
+		skills for a node developer.
+	</p>
+	<h3>Users in database now: <%= users.length %></h3>
+	<% if (users.length > 0) { %> <% users.forEach((user, index) => { %>
+
+	<div class="user-box">
+		<div class="user-info">
+			<h4><%= user.nickname %></h4>
+		</div>
+		<div class="user-buttons">
+			<button
+				class="action-buttons"
+				onclick="window.location.href='/users/<%= user._id %>';"
+			>
+				<i class="far fa-eye fa-2x icons"></i>
+			</button>
+			<button
+				class="action-buttons"
+				onclick="window.location.href='/update-user/<%= user._id %>';"
+			>
+				<i class="far fa-edit fa-2x icons"></i>
+			</button>
+			<form method="post" action="<%=`/${user._id}?_method=DELETE` %>">
+				<button class="action-buttons" type="submit">
+					<i class="far fa-trash-alt fa-2x icons"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<% }) %> <% } else { %>
+	<p>There are no users created...</p>
+	<% } %>
+</main>
+<%- include('./partials/footer.ejs') %>

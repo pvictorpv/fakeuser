@@ -1,0 +1,33 @@
+<!-- Partials - Reutilização de código repetido em todas as páginas -->
+<%- include('./partials/head.ejs') %> <%- include('./partials/nav.ejs') %>
+<div class="form">
+	<h2>Create an user</h2>
+	<form class="createUpdateForm" method="post" action="/create-user">
+		<label for="nickname">Nickname:</label>
+		<input
+			type="text"
+			id="nickname"
+			name="nickname"
+			placeholder="Choose a nickname"
+			required
+		/>
+		<label for="email">Email:</label>
+		<input
+			type="email"
+			id="email"
+			name="email"
+			placeholder="Put your email"
+			required
+		/>
+		<label for="password">Password:</label>
+		<input
+			type="password"
+			id="password"
+			name="password"
+			placeholder="Create a password"
+			required
+		/>
+		<button>Create</button>
+	</form>
+</div>
+<%- include('./partials/footer.ejs') %>
