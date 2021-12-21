@@ -31,3 +31,18 @@
 	</form>
 </div>
 <%- include('./partials/footer.ejs') %>
+
+<script>
+	const form = document.querySelector('form');
+
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
+
+		// get the values
+		const nickname = form.nickname.value;
+		const email = form.email.value;
+		const password = form.password.value;
+
+		console.log(nickname, email, password);
+	});
+</script>

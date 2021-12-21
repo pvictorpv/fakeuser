@@ -4,14 +4,18 @@ const moment = require('moment');
 
 const route = express.Router();
 const controller = require('../controller/controller');
+const { requireAuth, checkUser } = require('../middleware/authMiddleware');
 
 const User = require('../models/user');
+
+// Rota para mostrar usuário logado ou opção de login
+route.get('*', checkUser);
 
 /**
  * @description create user route
  * @method GET /create-user
  */
-route.get('/create-user', (req, res) => {
+route.get('/create-user', requireAuth, (req, res) => {
 	res.render('create-user', { title: 'Create User' });
 });
 
@@ -19,7 +23,7 @@ route.get('/create-user', (req, res) => {
  * @description update user route
  * @method GET /update-user
  */
-route.get('/update-user/:id', (req, res) => {
+route.get('/update-user/:id', requireAuth, (req, res) => {
 	const id = req.params.id;
 	User.findById(id)
 		.then((result) => {
@@ -40,11 +44,17 @@ route.use(
 
 // API
 
-route.post('/create-user', controller.create);
+route.post('/create-user', requireAuth, controller.create);
 route.get('/', controller.findAll);
 route.get('/users/:id', controller.findById);
-route.put('/update-user/:id', controller.update);
-route.delete('/:id', controller.delete);
+route.put('/update-user/:id', requireAuth, controller.update);
+route.delete('/:id', requireAuth, controller.delete);
+
+// Auth Routes
+
+route.get('/login', controller.login_get);
+route.post('/login', controller.login_post);
+route.get('/logout', controller.logout_get);
 
 /**
  * @description 404 page route

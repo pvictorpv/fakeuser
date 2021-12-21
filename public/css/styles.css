@@ -7,6 +7,10 @@ body {
 	margin: 0 auto;
 }
 
+.page {
+	margin: 0 10px;
+}
+
 .form {
 	display: flex;
 	flex-direction: column;
@@ -42,6 +46,10 @@ nav {
 	align-items: center;
 }
 
+nav a {
+	padding: 0;
+}
+
 nav ul {
 	list-style-type: none;
 }
@@ -51,8 +59,8 @@ nav li {
 	margin: 10px;
 }
 
-nav li a {
-	padding: 0;
+a[role='button'] {
+	padding: 10px;
 }
 
 main a:hover {

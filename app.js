@@ -4,10 +4,13 @@ const ejs = require('ejs');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 
 const User = require('./server/models/user');
 
 const connectDB = require('./server/database/connection');
+
+const routes = require('./server/routes/router');
 
 // 2. CONFIGURAÇÃO DO SERVIDOR
 
@@ -29,7 +32,14 @@ connectDB();
 // Configurando a pasta pública para arquivos estáticos (ex: css, img)
 app.use(express.static('public'));
 
-app.use(express.urlencoded({ extended: true })); // Body-Parser built-in - Dá acesso ao req.body
+// Body-Parser built-in - Dá acesso ao req.body
+app.use(express.urlencoded({ extended: true }));
+
+// Parses json data in the request to a javascript object (inside req.body)
+app.use(express.json());
+
+// Cookie Parser
+app.use(cookieParser());
 
 // [OPCIONAL] Mudando a pasta padrão 'views'
 // app.set('views', 'nome-da-pasta')
@@ -45,7 +55,7 @@ app.use(express.urlencoded({ extended: true })); // Body-Parser built-in - Dá a
 
 // IMPORTANDO ROTAS (TRANSFERIDAS PARA /server/routes)
 
-app.use('/', require('./server/routes/router'));
+app.use(routes);
 
 // TUDO PRONTO? INICIANDO SERVIDOR
 
