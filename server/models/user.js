@@ -21,6 +21,9 @@ const userSchema = new Schema(
 			required: [true, 'You need to enter an password'],
 			minlength: [6, 'Enter at least 6 characters'],
 		},
+		isAdmin: {
+			type: String,
+		},
 	},
 	{ timestamps: true }
 ); // Propriedade embutida no mongoose para determinar data e hora de criação ou atualização

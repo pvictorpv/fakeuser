@@ -46,6 +46,7 @@ exports.create = (req, res) => {
 		nickname: req.body.nickname,
 		email: req.body.email,
 		password: req.body.password,
+		isAdmin: req.body.isAdmin,
 	});
 
 	// save user in the database
@@ -156,7 +157,7 @@ module.exports.login_post = async function (req, res) {
 		const user = await User.login(email, password);
 		const token = createToken(user._id);
 		res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-		res.status(200).json({ user: user._id });
+		res.status(200).redirect('/');
 	} catch (err) {
 		const errors = handleErrors(err);
 		res.status(400).json({});

@@ -46,7 +46,7 @@ route.use(
 
 route.post('/create-user', requireAuth, controller.create);
 route.get('/', controller.findAll);
-route.get('/users/:id', controller.findById);
+route.get('/users/:id', requireAuth, controller.findById);
 route.put('/update-user/:id', requireAuth, controller.update);
 route.delete('/:id', requireAuth, controller.delete);
 
