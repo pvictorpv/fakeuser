@@ -71,7 +71,11 @@ exports.findAll = (req, res) => {
 	// User.find().sort({createdAt: -1}) - É possível ordenar de forma diferente os dados, nesse caso pela ordem inversa de criação.
 	User.find()
 		.then((result) => {
-			res.render('index', { title: 'Home', users: result });
+			res.render('index', {
+				title: 'Home',
+				users: result,
+				loggedUser: req.oidc.user,
+			});
 		})
 		.catch((err) => {
 			res.status(500).send({
@@ -86,7 +90,12 @@ exports.findById = (req, res) => {
 	const id = req.params.id;
 	User.findById(id)
 		.then((result) => {
-			res.render('details', { users: result, title: 'User Details', moment });
+			res.render('details', {
+				users: result,
+				title: 'User Details',
+				loggedUser: req.oidc.user,
+				moment,
+			});
 		})
 		.catch((err) => {
 			res.status(500).send({

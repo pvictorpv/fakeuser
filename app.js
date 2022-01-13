@@ -21,7 +21,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 // Configurando o pacote dotenv
-dotenv.config({ path: 'config.env' });
+dotenv.config({ path: '.env' });
 const PORT = process.env.PORT || 8080;
 
 // Conectando à base de dados - Async Await retorna uma promise que ativará o servidor - Configuração transferida para /database/connection.
